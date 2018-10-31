@@ -25,7 +25,7 @@ SECRET_KEY = ')5j5$&4lyjn2i=-u7thehhpyg0v41j_as#!mvt!ye@)8ispqu5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['pupille-api-staging.herokuapp.com', 'pupille-api-prod.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
