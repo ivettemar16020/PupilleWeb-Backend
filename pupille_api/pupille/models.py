@@ -22,11 +22,25 @@ class Theme(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     commentary = models.ManyToManyField(CustomUser, through= 'Comment', related_name='comment')
 
+    class Meta:
+        ordering = ('created',)
+
+    def __str__(self):
+        """A string representation of the model."""
+        return self.name
+
 class Card(models.Model):
     card_id = models.IntegerField(primary_key=True)
     theme = models.ForeignKey(Theme, on_delete=models.CASCADE)
     question = models.CharField(max_length=100, blank=False, null=False)
     answer = models.CharField(max_length=100, blank=False, null=False)
+
+    class Meta:
+        ordering = ('card_id',)
+
+    def __str__(self):
+        """A string representation of the model."""
+        return self.theme
 
 
 class Comment(models.Model):
@@ -34,4 +48,11 @@ class Comment(models.Model):
     theme = models.ForeignKey(Theme, related_name='theme', on_delete=models.CASCADE)
     content = models.TextField(blank=False, null=False)
     creation_datetime = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ('creation_datetime',)
+
+    def __str__(self):
+        """A string representation of the model."""
+        return self.user
 
